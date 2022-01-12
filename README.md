@@ -4,9 +4,7 @@
 
 ## UO Coding bootcamp Challenge
 
-
 ## Description
-
 
 ## Links
 
@@ -17,6 +15,8 @@
 [Heroku]()
 
 ## Required installations for code duplication
+
+## Front end dependencies
 
 npm - npm install
 .env - npm install dotenv
@@ -31,6 +31,16 @@ Mongoose - npm install mongoose
 mysql2 - npm install mysql2
 sequelize - npm install sequelize
 
+## Server side dependencies
+```
+"apollo-server-express": "^2.25.3",
+"express": "^4.17.2",
+"graphql": "^15.8.0",
+"jsonwebtoken": "^8.5.1",
+"mongoose": "^5.13.14",
+"stripe": "^8.195.0"
+```
+
 ## The commandments
 
 "scripts": {
@@ -42,12 +52,10 @@ sequelize - npm install sequelize
 
 # Contributions by:
 
-DeveloperDuckArroyo
-[Email](mailto:DeveloperDuckArroyo@gmail.com)
-[Portfolio](https://duckarroyo.github.io/portfolio/)
+`DeveloperDuckArroyo` |
+[Email](mailto:DeveloperDuckArroyo@gmail.com) |
+[Portfolio](https://duckarroyo.github.io/portfolio/) |
 [GitHub](https://github.com/DuckArroyo)
-
-
 
 # Screenshots
 
