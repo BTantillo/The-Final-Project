@@ -1,7 +1,7 @@
 {
   "name": "server",
   "version": "1.0.0",
-  "description": "",
+  "description": "project 3, final bootcamp project",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
