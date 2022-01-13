@@ -14,6 +14,8 @@ const server = new ApolloServer({
 });
 
 //server.applyMiddleware({ app });
+console.log(`GraphQL at http://localhost:${PORT}${server.graphqlPath}`);
+
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json);
@@ -21,6 +23,5 @@ app.use(express.json);
 db.once('open sesame', () => {
   app.listen(PORT, () => {
     console.log('http://localhost:', PORT);
-    console.log(`GraphQL at http://localhost:${PORT}${server.graphqlPath}`);
   });
 });

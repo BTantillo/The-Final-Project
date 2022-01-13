@@ -1,8 +1,11 @@
 //const {User} = require('../models');
 
 const resolvers = {
-  Query: {test: () => {return 'test Stringed!!'}},
-  Mutation: {},
+  Query: {
+    TestString: () => {
+      return 'test Stringed!!';
+    },
+  },
 };
 
 module.exports = resolvers;
