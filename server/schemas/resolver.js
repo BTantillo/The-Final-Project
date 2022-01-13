@@ -1,7 +1,7 @@
 //const {User} = require('../models');
 
 const resolvers = {
-  Query: {},
+  Query: {test: () => {return 'test Stringed!!'}},
   Mutation: {},
 };
 
