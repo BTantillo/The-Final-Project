@@ -1,9 +1,13 @@
-//const {User} = require('../models');
+const { User } = require('../models/User');
 
 const resolvers = {
   Query: {
-    TestString: () => {
-      return 'test Stringed!!';
+    users: async () => {
+      return User.find().select('-__v -password');
+    },
+
+    user: async (parent, { username }) => {
+      return User.findOne({ username }).select('-__v -password');
     },
   },
 };
