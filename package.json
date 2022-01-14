@@ -21,7 +21,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
-    "install": "cd server && npm i && npm i"
+    "install": "cd server && npm i && cd ../client && npm i"
   },
   "eslintConfig": {
     "extends": [
