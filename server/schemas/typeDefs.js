@@ -21,8 +21,6 @@ const typeDefs = gql`
     eventText: String
     createdAt: String
     username: String
-    reactionCount: Int
-    reactions: [Reaction]
   }
 `;
 
