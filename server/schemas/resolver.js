@@ -17,8 +17,19 @@ const resolvers = {
 
     event: async(parent, { _id }) => {
       return Event.findOne({ _id });
-    }
+    },
+    
   },
+  Mutation: {
+    addUser: async (parent, args) => {
+      const user = await User.create(args);
+    
+      return user;
+    },
+    login: async () => {
+
+    }
+  }
 };
 
 module.exports = resolvers;
