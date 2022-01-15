@@ -2,7 +2,7 @@ import React from 'react';
 import { Redirect, useParams } from 'react-router-dom';
 
 import ThoughtList from '../components/ThoughtList';
-import { ADD_FRIEND } from '../utils/mutations'
+// import { ADD_FRIEND } from '../utils/mutations'
 import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_USER, QUERY_ME  } from '../utils/queries';
 import FriendList from '../components/FriendList';
