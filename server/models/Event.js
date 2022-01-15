@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 const dateFormat = require('../utils/dateFormat');
+const reactionSchema = require('./Reaction');
 
 const eventSchema = new Schema({
     eventText: {
@@ -17,7 +18,8 @@ const eventSchema = new Schema({
         type: String,
         required: true
     },
-    // reactions: [reactionSchema]
+    // add image stuff when package is figured out
+    reactions: [reactionSchema]
 },
 {
     toJson: {

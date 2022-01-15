@@ -5,8 +5,7 @@ const typeDefs = gql`
     _id: ID
     username: String
     email: String
-    events(username: String): [Event]
-    event(_id: ID!): Event
+    events: [Event]
   }
 
   type Query {
@@ -16,11 +15,30 @@ const typeDefs = gql`
     event(_id: ID!): Event
   }
 
+  type Reaction {
+    _id: ID
+    reactionBody: String
+    createdAt: String
+    username: String
+  }
+
   type Event {
     _id: ID
     eventText: String
     createdAt: String
     username: String
+    reactionCount: Int
+    reactions: [Reaction]
+  }
+
+  type Mutation {
+    login(email: String!, password: String!): Auth
+    addUser(username: String!, email: String!, password: String!): Auth
+  }
+
+  type Auth {
+    token: ID!
+    user: User
   }
 `;
 
