@@ -2,7 +2,7 @@ import React from 'react';
 import { useQuery } from '@apollo/client';
 import ThoughtList from '../components/ThoughtList';
 import { QUERY_ME_BASIC } from '../utils/queries';
-// import { QUERY_THOUGHTS } from '../utils/queries';
+import { QUERY_EVENTS } from '../utils/queries';
 
 import Auth from '../utils/auth'
 import FriendList from '../components/FriendList'
@@ -12,9 +12,9 @@ import ThoughtForm from '../components/ThoughtForm';
 
 const Home = () => {
   // use useQuery hook to make query request
-  const { loading, data } = useQuery(QUERY_THOUGHTS);
-  const thoughts = data?.thoughts || [];
-  console.log(thoughts);
+  const { loading, data } = useQuery(QUERY_EVENTS);
+  const events = data?.events || [];
+  console.log(events);
 
   // use object destructuring to extract `data` from the `useQuery` Hook's response and rename it `userData` to be more descriptive
   const { data: userData } = useQuery(QUERY_ME_BASIC)
@@ -33,7 +33,7 @@ const Home = () => {
         {loading ? (
           <div>Loading...</div>
         ) : (
-          <ThoughtList thoughts={thoughts} title="Some Feed for Thought(s)..." />
+          <ThoughtList events={events} title="Some Feed for Thought(s)..." />
         )}
       </div>
       {loggedIn && userData ? (
