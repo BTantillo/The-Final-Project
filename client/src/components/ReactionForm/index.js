@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { ADD_REACTION } from '../../utils/mutations';
 
-const ReactionForm = ({ thoughtId }) => {
+const ReactionForm = ({ eventId }) => {
   const [reactionBody, setBody] = useState('');
   const [characterCount, setCharacterCount] = useState(0);
   const [addReaction, { error }] = useMutation(ADD_REACTION);
@@ -22,7 +22,7 @@ const ReactionForm = ({ thoughtId }) => {
 
     try {
       await addReaction({
-        variables: { reactionBody, thoughtId },
+        variables: { reactionBody, eventId },
       });
 
       // clear form value
@@ -46,7 +46,7 @@ const ReactionForm = ({ thoughtId }) => {
         onSubmit={handleFormSubmit}
       >
         <textarea
-          placeholder="Leave a reaction to this thought..."
+          placeholder="Leave a reaction to this event..."
           value={reactionBody}
           className="form-input col-12 col-md-9"
           onChange={handleChange}

@@ -1,33 +1,33 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
 
-const ThoughtList = ({ thoughts, title }) => {
-  if (!thoughts.length) {
-    return <h3>No Thoughts Yet</h3>;
+const ThoughtList = ({ events, title }) => {
+  if (!events.length) {
+    return <h3>No Events Yet</h3>;
   }
 
   return (
     <div>
       <h3>{title}</h3>
-      {thoughts &&
-        thoughts.map(thought => (
-          <div key={thought._id} className="card mb-3">
+      {events &&
+        events.map(event => (
+          <div key={event._id} className="card mb-3">
             <p className="card-header">
               <Link
-              to={`/profile/${thought.username}`}
+              to={`/profile/${event.username}`}
               style={{ fontWeight: 700 }}
               className="text-light"
               >
-              {thought.username}
+              {event.username}
               </Link>{' '}
-              thought on {thought.createdAt}
+              event on {event.createdAt}
             </p>
             <div className="card-body">
-              <Link to={`/thought/${thought._id}`}>
-              <p>{thought.thoughtText}</p>
+              <Link to={`/event/${event._id}`}>
+              <p>{event.eventText}</p>
               <p className="mb-0">
-                Reactions: {thought.reactionCount} || Click to{' '}
-                {thought.reactionCount ? 'see' : 'start'} the discussion!
+                Reactions: {event.reactionCount} || Click to{' '}
+                {event.reactionCount ? 'see' : 'start'} the discussion!
               </p>
               </Link>
             </div>
