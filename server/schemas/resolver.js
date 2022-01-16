@@ -33,7 +33,7 @@ const resolvers = {
       return Event.findOne({ _id });
     },
   },
-  
+
   Mutation: {
     addUser: async (parent, args) => {
       const user = await User.create(args);
@@ -41,7 +41,58 @@ const resolvers = {
 
       return { token, user };
     },
-    
+
+    addEvent: async (parent, args, context) => {
+      if (context.user) {
+        const event = await Event.create({
+          ...args,
+          username: context.user.username,
+        });
+
+        await User.findByIdAndUpdate(
+          { _id: context.user._id },
+          { $push: { events: event._id } },
+          { new: true }
+        );
+
+        return event;
+      }
+
+      throw new AuthenticationError('You need to be logged in to post!');
+    },
+
+    addReaction: async (parent, { eventId, reactionBody }, context) => {
+      if (context.user) {
+        const updatedEvent = await Event.findOneAndUpdate(
+          { _id: eventId },
+          {
+            $push: {
+              reactions: { reactionBody, username: context.user.username },
+            },
+          },
+          { new: true, runValidators: true }
+        );
+
+        return updatedEvent;
+      }
+
+      throw new AuthenticationError('You need to be logged in!');
+    },
+
+    addFriend: async (parent, { friendId }, context) => {
+      if (context.user) {
+        const updatedUser = await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $addToSet: { friends: friendId } },
+          { new: true }
+        ).populate('friends');
+
+        return updatedUser;
+      }
+
+      throw new AuthenticationError('You need to be logged in!');
+    },
+
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
 
