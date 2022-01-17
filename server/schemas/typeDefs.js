@@ -38,6 +38,7 @@ const typeDefs = gql`
     addEvent(eventText: String!): Event
     addReaction(eventId: ID!, reactionBody: String!): Event
     addFriend(friendId: ID!): User
+    addCrew(crewId: ID!):User
   }
 
   type Auth {
