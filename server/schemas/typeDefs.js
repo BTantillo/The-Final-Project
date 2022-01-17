@@ -14,6 +14,7 @@ const typeDefs = gql`
     user(username: String!): User
     events(username: String): [Event]
     event(_id: ID!): Event
+    team(_id: ID!): User
   }
 
   type Reaction {
@@ -38,7 +39,7 @@ const typeDefs = gql`
     addEvent(eventText: String!): Event
     addReaction(eventId: ID!, reactionBody: String!): Event
     addFriend(friendId: ID!): User
-    addCrew(crewId: ID!):User
+    addCrew(crewId: ID!): User
   }
 
   type Auth {

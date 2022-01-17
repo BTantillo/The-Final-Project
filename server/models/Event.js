@@ -1,46 +1,47 @@
-const mongoose = require('mongoose');
-const { Schema } = mongoose;
+const { Schema, model } = require('mongoose');
 const dateFormat = require('../utils/dateFormat');
 const reactionSchema = require('./Reaction');
 
-const eventSchema = new Schema({
+const eventSchema = new Schema(
+  {
     eventText: {
-        type: String,
-        required: "You cant leave the event empty!",
-        minlength: 1
+      type: String,
+      required: 'You cant leave the event empty!',
+      minlength: 1,
     },
     createdAt: {
-        type: Date,
-        default: Date.now,
-        get: timestamp => dateFormat(timestamp)
+      type: Date,
+      default: Date.now,
+      get: (timestamp) => dateFormat(timestamp),
     },
     username: {
-        type: String,
-        required: true
+      type: String,
+      required: true,
     },
     // add image stuff when package is figured out
     reactions: [reactionSchema],
     team: [
       {
         type: Schema.Types.ObjectId,
-        ref: 'User'
-      }
-    ]
-},
-{
+        ref: 'User',
+      },
+    ],
+  },
+  {
     toJson: {
-        getters: true
-    }
+      getters: true,
+      virtuals: true,
+    },
   }
 );
 
-eventSchema.virtual('reactionCount').get(function() {
-    return this.reactions.length;
+eventSchema.virtual('reactionCount').get(function () {
+  return this.reactions.length;
 });
 
-userSchema.virtual('friendCount').get(function() {
-    return this.friends.length;
-  });
+userSchema.virtual('crewCount').get(function () {
+  return this.team.length;
+});
 
 const Event = mongoose.model('Event', eventSchema);
 
