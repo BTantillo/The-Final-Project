@@ -19,7 +19,13 @@ const eventSchema = new Schema({
         required: true
     },
     // add image stuff when package is figured out
-    reactions: [reactionSchema]
+    reactions: [reactionSchema],
+    team: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+      }
+    ]
 },
 {
     toJson: {
@@ -31,6 +37,10 @@ const eventSchema = new Schema({
 eventSchema.virtual('reactionCount').get(function() {
     return this.reactions.length;
 });
+
+userSchema.virtual('friendCount').get(function() {
+    return this.friends.length;
+  });
 
 const Event = mongoose.model('Event', eventSchema);
 
