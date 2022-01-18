@@ -44,6 +44,10 @@ const resolvers = {
     
       const token = signToken(user);
       return { token, user };
+    },
+
+    uploadFile: async (parent, { file }) => {
+      const { createReadStream, filename, mimetype, encoding } = await file
     }
     
   }
