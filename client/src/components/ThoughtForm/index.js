@@ -62,7 +62,7 @@ const ThoughtForm = () => {
             <form className="flex-row justify-center justify-space-between-md align-stretch"
                 onSubmit={handleFormSubmit} >
             <textarea
-            placeholder="Tell people what's happenin'..."
+            placeholder="Create an Event and Tell People What's Happenin'..."
             value={eventText}
             className="form-input col-12 col-md-9"
             onChange={handleChange}
