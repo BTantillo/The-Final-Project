@@ -12,6 +12,7 @@ import Footer from './components/Footer';
 
 import Home from './pages/Home';
 import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
+import { createUploadLink } from 'apollo-upload-client'
 
 import { setContext } from '@apollo/client/link/context'
 
