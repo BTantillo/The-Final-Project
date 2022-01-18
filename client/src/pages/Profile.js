@@ -55,7 +55,7 @@ const handleClick = async () => {
       {userParam && (
         <button className="btn has-icons-left ml-auto" onClick={handleClick}>
           <span className="icon">
-            <i class="fas fa-search"></i>
+            <i class="fas fa-users"></i>
           </span>
           <span>
             Add Friend
