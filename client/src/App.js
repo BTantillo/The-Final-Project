@@ -20,6 +20,10 @@ const httplink = createHttpLink({
   uri: '/graphql'
 })
 
+const uploadlink = createUploadLink({
+  uri: 'http://localhost:3003/'
+})
+
 const authLink = setContext((_, { headers }) => {
   const token = localStorage.getItem('id_token');
   return {
@@ -31,7 +35,7 @@ const authLink = setContext((_, { headers }) => {
 })
 
 const client = new ApolloClient({
-  link: authLink.concat(httplink),
+  link: authLink.concat(httplink, uploadlink),
   cache: new InMemoryCache()
 })
 
