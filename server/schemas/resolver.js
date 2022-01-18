@@ -54,10 +54,10 @@ const resolvers = {
       await stream.pipe(fs.createWriteStream(pathName))
 
       return {
+        // this link needs to change in production
         url: `http://localhost:3003/images/${filename}`
       }
     }
-    
   }
 };
 
