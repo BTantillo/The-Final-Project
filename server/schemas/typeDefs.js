@@ -31,9 +31,14 @@ const typeDefs = gql`
     reactions: [Reaction]
   }
 
+  type File {
+    url: String!
+  }
+
   type Mutation {
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
+    uploadFile(file: Upload!): File!
   }
 
   type Auth {

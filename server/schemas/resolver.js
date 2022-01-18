@@ -44,8 +44,20 @@ const resolvers = {
     
       const token = signToken(user);
       return { token, user };
+    },
+
+    uploadFile: async (parent, { file }) => {
+      const { createReadStream, filename, mimetype, encoding } = await file
+
+      const stream = createReadStream()
+      const pathName = path.join(__dirname, `/public/images/${filename}`)
+      await stream.pipe(fs.createWriteStream(pathName))
+
+      return {
+        // this link needs to change in production
+        url: `http://localhost:3003/images/${filename}`
+      }
     }
-    
   }
 };
 
