@@ -1,6 +1,8 @@
-const { Schema, model } = require('mongoose');
+const mongoose = require('mongoose');
+const { Schema } = mongoose;
 const dateFormat = require('../utils/dateFormat');
 const reactionSchema = require('./Reaction');
+const userSchema = require('./User');
 
 const eventSchema = new Schema(
   {
@@ -39,7 +41,7 @@ eventSchema.virtual('reactionCount').get(function () {
   return this.reactions.length;
 });
 
-userSchema.virtual('crewCount').get(function () {
+eventSchema.virtual('crewCount').get(function () {
   return this.team.length;
 });
 
