@@ -48,6 +48,14 @@ const resolvers = {
 
     uploadFile: async (parent, { file }) => {
       const { createReadStream, filename, mimetype, encoding } = await file
+
+      const stream = createReadStream()
+      const pathName = path.join(__dirname, `/public/images/${filename}`)
+      await stream.pipe(fs.createWriteStream(pathName))
+
+      return {
+        url: `http://localhost:3003/images/${filename}`
+      }
     }
     
   }
