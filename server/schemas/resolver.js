@@ -1,6 +1,7 @@
 const { User, Event } = require('../models/');
 const { AuthenticationError } = require('apollo-server-express');
 const { signToken } = require('../utils/auth');
+const path = require('path');
 
 function generateRandomString(length) {
   var result = '';
@@ -57,7 +58,7 @@ const resolvers = {
     },
 
     uploadFile: async (parent, { file }) => {
-      const { createReadStream, filename, mimetype, encoding } = await file
+      const { createReadStream, filename } = await file
 
       const { ext } = path.parse(filename)
       const randomName = generateRandomString(12) + ext
@@ -68,7 +69,7 @@ const resolvers = {
 
       return {
         // this link needs to change in production
-        url: `http://localhost:3003/images/${randomName}`
+        url: `http://localhost:3003/public/images/${randomName}`
       }
     }
   }

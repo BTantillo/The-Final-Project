@@ -1,11 +1,11 @@
 const express = require('express');
-const {ApolloServer} = require('apollo-server-express');
+const { ApolloServer } = require('apollo-server-express');
 const path = require('path');
 const cors = require('cors');
 const fs = require('fs');
 
-const {typeDefs, resolvers} = require('./schemas');
-// const {authMiddleware} = require('./utils/auth');
+const { typeDefs, resolvers } = require('./schemas');
+const { authMiddleware } = require('./utils/auth');
 const db = require('./config/connection');
 
 const PORT = process.env.PORT || 3003;
@@ -15,25 +15,26 @@ const startServer = async () => {
   const server = new ApolloServer({
     typeDefs,
     resolvers,
-    // context: authMiddleware,
+    context: authMiddleware,
   });
   await server.start();
-
-  const app = express();
-
-  app.use(graphqlUploadExpress());
-  
   server.applyMiddleware({ app });
   console.log(`Use GraphQL at http://localhost:${PORT}${server.graphqlPath}`);
 };
 
 startServer();
 
+app.use(cors())
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-app.use(express.static('public'))
-app.use(cors())
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '../client/build')));
+}
+//! To activate graphQL comment this out
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/build/index.html'));
+});
 
 db.once('open', () => {
   app.listen(PORT, () => {

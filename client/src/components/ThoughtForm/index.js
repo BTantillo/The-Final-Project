@@ -6,6 +6,9 @@ import { QUERY_THOUGHTS, QUERY_ME } from '../../utils/queries'
 const ThoughtForm = () => {
     const [thoughtText, setText] = useState('')
     const [characterCount, setCharacterCount] = useState(0);
+    const [uploadFile] = useMutation(UPLOAD_FILE, {
+      onCompleted: data => console.log(data)
+    })
     const [addThought, { error }] = useMutation(ADD_THOUGHT, {
         update(cache, { data: { addThought } }) {
           try {
@@ -52,6 +55,13 @@ const ThoughtForm = () => {
         }
       }
 
+
+      const handleFileChange = e => {
+        const file = e.target.files[0]
+        if(!file) return
+        uploadFile({ variables: { file }})
+       }
+
     return (
         <div>
             <p className={`m-0 ${characterCount === 280 || error ? 'text-error' : ''}`}>
@@ -70,6 +80,8 @@ const ThoughtForm = () => {
                 Submit
                 </button>
             </form>
+            <h1> Upload Test </h1>
+            <input type='file' onChange={handleFileChange} />
         </div>
     )
 }
