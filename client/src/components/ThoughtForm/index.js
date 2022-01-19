@@ -1,10 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
+import Dropzone, { useDropzone } from "react-dropzone";
 import { useMutation } from '@apollo/client';
 import { ADD_EVENT } from '../../utils/mutations';
 import {  QUERY_ME } from '../../utils/queries' 
 import { QUERY_EVENTS } from '../../utils/queries' 
 
 const ThoughtForm = () => {
+    const onDrop = useCallback(acceptedFiles => {
+      console.log(acceptedFiles);
+    }, []);
+
+    const {getRootProps, getInputProps} = useDropzone({
+      onDrop
+    });
     const [eventText, setText] = useState('')
     const [characterCount, setCharacterCount] = useState(0);
     const [addEvent, { error }] = useMutation(ADD_EVENT, {
@@ -60,15 +68,20 @@ const ThoughtForm = () => {
             {error && <span className="ml-2">Something went wrong...</span>}
             </p>
             <form className="flex-row justify-center justify-space-between-md align-stretch"
-                onSubmit={handleFormSubmit} >
+                onSubmit={handleFormSubmit}
+                {...getRootProps()} >
             <textarea
             placeholder="Create an Event and Tell People What's Happenin'..."
             value={eventText}
             className="form-input col-12 col-md-9"
             onChange={handleChange}
                 ></textarea>
-                <button className="btn has-icons-right col-12 col-md-3" type="submit">
-                  Submit
+                <div {...getRootProps()}>
+                  <input {...getInputProps()} />
+                  <div>Drag and drop your images here.</div>
+                </div>
+                <button className="btn col-12 col-md-3" type="submit">
+                Submit
                   <span className="icon">
                   <i className="fas fa-check"></i>
                   </span>
