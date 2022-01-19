@@ -18,6 +18,11 @@ const startServer = async () => {
     // context: authMiddleware,
   });
   await server.start();
+
+  const app = express();
+
+  app.use(graphqlUploadExpress());
+  
   server.applyMiddleware({ app });
   console.log(`Use GraphQL at http://localhost:${PORT}${server.graphqlPath}`);
 };
