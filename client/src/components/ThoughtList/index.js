@@ -26,7 +26,7 @@ const ThoughtList = ({ events, title }) => {
               <p>{event.eventText}</p>
               <p className="mb-0">
                 This Many People Are Interested: {event.reactionCount} || Click to{' '}
-                {event.reactionCount ? 'see' : 'sheck out'} this event!
+                {event.reactionCount ? 'see' : 'check out'} this event!
               </p>
               </Link>
             </div>
