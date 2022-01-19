@@ -25,8 +25,8 @@ const ThoughtList = ({ events, title }) => {
               <Link to={`/event/${event._id}`}>
               <p>{event.eventText}</p>
               <p className="mb-0">
-                Reactions: {event.reactionCount} || Click to{' '}
-                {event.reactionCount ? 'see' : 'start'} the discussion!
+                This Many People Are Interested: {event.reactionCount} || Click to{' '}
+                {event.reactionCount ? 'see' : 'sheck out'} this event!
               </p>
               </Link>
             </div>

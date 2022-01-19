@@ -13,7 +13,7 @@ const Header = () => {
       <div className="container flex-row justify-space-between-lg justify-center align-center">
         <Link to="/">
         <h1>What's Happenin'</h1>
-        <h5>There's Always Something Happenin'</h5>
+        <h5>There's Always Something Going on'</h5>
         </Link>
 
         <nav className="text-center">
@@ -23,7 +23,7 @@ const Header = () => {
               <span className="icon">
               <i class="fas fa-user-circle"></i>
                 </span> 
-              Me
+              Profile
               </Link>
             <a href="/" onClick={logout}>
               <span className="icon">
