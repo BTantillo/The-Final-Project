@@ -67,8 +67,11 @@ const ThoughtForm = () => {
             className="form-input col-12 col-md-9"
             onChange={handleChange}
                 ></textarea>
-                <button className="btn col-12 col-md-3" type="submit">
-                Submit
+                <button className="btn has-icons-right col-12 col-md-3" type="submit">
+                  Submit
+                  <span className="icon">
+                  <i className="fas fa-check"></i>
+                  </span>
                 </button>
             </form>
         </div>
