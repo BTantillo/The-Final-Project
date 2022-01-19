@@ -19,6 +19,7 @@ const SingleEvent = props => {
     return <div>Loading...</div>
   }
   console.log(eventId); 
+  console.log(event)
   return (
     <div>
       <div className="card mb-3">

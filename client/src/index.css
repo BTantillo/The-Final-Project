@@ -24,7 +24,8 @@ body {
 }
 
 header {
-  background-color: var(--secondary);
+  /* background-color: var(--secondary); */
+  background-image: linear-gradient(to left, #84A98C, #52796F)
 }
 
 body {
