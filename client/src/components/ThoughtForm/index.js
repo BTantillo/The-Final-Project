@@ -68,8 +68,7 @@ const ThoughtForm = () => {
             {error && <span className="ml-2">Something went wrong...</span>}
             </p>
             <form className="flex-row justify-center justify-space-between-md align-stretch"
-                onSubmit={handleFormSubmit}
-                {...getRootProps()} >
+                onSubmit={handleFormSubmit} >
             <textarea
             placeholder="Create an Event and Tell People What's Happenin'..."
             value={eventText}
