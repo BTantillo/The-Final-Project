@@ -1,9 +1,9 @@
 :root {
-  --primary: #497573;
-  --secondary: #99f7f2;
-  --tertiary: #b2c2c1;
-  --quatrinary: #cadbda;
-  --light: #e1f5f4;
+  --primary: #CAD2C5;
+  --secondary: #84A98C;
+  --tertiary: #52796F;
+  --quatrinary: #293D38;
+  --quinary: #d2dee4;
   --dark: #6c7575;
   --error: rgb(228, 46, 1);
   --border-radius: 0.3rem;
@@ -23,6 +23,11 @@ body {
   min-height: 100%;
 }
 
+header {
+  /* background-color: var(--secondary); */
+  background-image: linear-gradient(to left, #84A98C, #52796F)
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -30,8 +35,8 @@ body {
   font-weight: 400;
   line-height: 1.5;
   font-size: 20px;
-  color: var(--dark);
-  background-color: #f3fffee1;
+  /* color: var(--dark); */
+  background-image: linear-gradient(to right, #2F3E46, #598388);
 }
 
 h1,
@@ -48,14 +53,22 @@ h6 {
 
 h1 {
   font-size: 2.25rem;
+  color: var(--quatrinary);
 }
 
 h2 {
   font-size: 2rem;
+  color: var(--primary);
+  background-color: transparent;
+}
+
+h2:hover { 
+  background-color: #2F3E46;
 }
 
 h3 {
   font-size: 1.75rem;
+  color: var(--primary);
 }
 
 h4 {
@@ -64,6 +77,8 @@ h4 {
 
 h5 {
   font-size: 1.25rem;
+  color: var(--primary);
+  text-align: center;
 }
 
 h6 {
@@ -76,13 +91,13 @@ p {
 }
 
 a {
-  color: var(--dark);
   text-decoration: none;
+  color: var(--secondary);
 }
 
-a:visited {
+/* a:visited {
   color: inherit;
-}
+} */
 
 nav {
   width: 100%;
@@ -93,11 +108,11 @@ nav a {
   padding: 6px 10px;
   margin: 0 15px;
   transition: all 0.2s;
+  color: var(--quatrinary);
 }
 
 nav a:hover {
-  color: var(--secondary);
-  background-color: var(--dark);
+  color: var(--quinary);
 }
 
 .page-title {
@@ -107,6 +122,21 @@ nav a:hover {
   font-size: 2.5rem;
 }
 
+#friend-list {
+  background-color: var(--primary);
+}
+
+footer {
+  background-color: var(--secondary);
+}
+
+footer a {
+  color: var(--quatrinary);
+}
+
+footer a:hover {
+  color: var(--quinary);
+}
 .btn,
 .pill {
   font-size: 1.3rem;
@@ -115,16 +145,25 @@ nav a:hover {
   margin: 5px 0;
   border-radius: var(--border-radius);
   border: none;
-  color: var(--dark);
+  color: var(--primary);
   outline: none;
-  background-color: var(--secondary);
+  background-color: transparent;
   transition: all 0.5s;
+}
+
+.btn a {
+  color: var(--primary);
 }
 
 .btn:hover,
 .pill:hover {
   color: var(--secondary);
-  background-color: var(--dark);
+  background-color: #2F3E46;
+}
+
+.btn:hover a,
+.pill:hover a {
+  color: var(--secondary);
 }
 
 .btn-inline {
@@ -134,23 +173,31 @@ nav a:hover {
 /* CARDS */
 .card {
   margin: 0 0 20px 0;
-  border: 3px solid var(--dark);
+  /* border: 3px solid var(--quatrinary); */
   border-radius: var(--border-radius);
-  background-color: var(--light);
-  color: var(--dark);
+  background-color: var(--tertiary);
 }
 
 .card-header {
-  color: var(--secondary);
   margin: 0;
-  background-color: var(--dark);
+  background-color: var(--primary);
   padding: 0.625rem;
   border-radius: calc(0.18rem - 1px) calc(0.18rem - 1px) 0 0;
+}
+
+.card-header a {
+color: var(--quatrinary);
 }
 
 .card-body {
   padding: 2.5%;
   font-size: 1.4rem;
+  color: var(--primary);
+  background-image: linear-gradient(to right, #2F3E46, #598388);
+}
+
+.card-body a {
+  color: var(--primary);
 }
 
 /* FORM */
@@ -163,6 +210,10 @@ nav a:hover {
 .form-label {
   font-size: 1.2rem;
   margin: 0.625rem 0 0.25rem;
+}
+
+.form-textarea {
+  background-color: var(--primary);
 }
 
 .form-input {
