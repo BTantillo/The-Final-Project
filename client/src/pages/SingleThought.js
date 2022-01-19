@@ -18,7 +18,7 @@ const SingleEvent = props => {
   if(loading) {
     return <div>Loading...</div>
   }
-  console.log(eventId); 
+  console.log(eventId);
   console.log(event)
   return (
     <div>

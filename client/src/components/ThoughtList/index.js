@@ -19,13 +19,13 @@ const ThoughtList = ({ events, title }) => {
               >
               {event.username}
               </Link>{' '}
-              event on {event.createdAt}
+              created an event on {event.createdAt}
             </p>
             <div className="card-body">
               <Link to={`/event/${event._id}`}>
               <p>{event.eventText}</p>
               <p className="mb-0">
-                This Many People Are Interested: {event.reactionCount} || Click to{' '}
+                This Many People Are Interested: {event.reactionCount} || Click Here to{' '}
                 {event.reactionCount ? 'see' : 'check out'} this event!
               </p>
               </Link>
