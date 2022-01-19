@@ -24,7 +24,7 @@ const SingleEvent = props => {
     <div>
       <div className="card mb-3">
         <p className="card-header">
-          <span style={{ fontWeight: 700 }} className="text-light">
+          <span style={{ fontWeight: 700 }}>
             {event.username}
           </span>{' '}
           event on {event.createdAt}
