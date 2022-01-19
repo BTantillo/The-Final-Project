@@ -46,7 +46,7 @@ const ReactionForm = ({ eventId }) => {
         onSubmit={handleFormSubmit}
       >
         <textarea
-          placeholder="Leave a reaction to this event..."
+          placeholder="Let them know you are interested in this event..."
           value={reactionBody}
           className="form-input col-12 col-md-9"
           onChange={handleChange}
