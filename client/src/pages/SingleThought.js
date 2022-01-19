@@ -18,12 +18,13 @@ const SingleEvent = props => {
   if(loading) {
     return <div>Loading...</div>
   }
-  console.log(eventId); 
+  console.log(eventId);
+  console.log(event)
   return (
     <div>
       <div className="card mb-3">
         <p className="card-header">
-          <span style={{ fontWeight: 700 }} className="text-light">
+          <span style={{ fontWeight: 700 }}>
             {event.username}
           </span>{' '}
           event on {event.createdAt}

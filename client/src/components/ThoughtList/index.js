@@ -16,7 +16,6 @@ const ThoughtList = ({ events, title }) => {
               <Link
               to={`/profile/${event.username}`}
               style={{ fontWeight: 700 }}
-              className="text-light"
               >
               {event.username}
               </Link>{' '}

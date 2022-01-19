@@ -82,6 +82,9 @@ const ThoughtForm = () => {
                 </div>
                 <button className="btn col-12 col-md-3" type="submit">
                 Submit
+                  <span className="icon">
+                  <i className="fas fa-check"></i>
+                  </span>
                 </button>
             </form>
         </div>

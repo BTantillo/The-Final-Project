@@ -48,13 +48,18 @@ const handleClick = async () => {
   return (
     <div>
       <div className="flex-row mb-3">
-        <h2 className="bg-dark text-secondary p-3 display-inline-block">
+        <h2 className="p-3 display-inline-block">
           Viewing {userParam ? `${user.username}'s` : 'your'} profile. 
         </h2>
 
       {userParam && (
-        <button className="btn ml-auto" onClick={handleClick}>
-        Add Friend
+        <button className="btn has-icons-left ml-auto" onClick={handleClick}>
+          <span className="icon">
+            <i class="fas fa-users"></i>
+          </span>
+          <span>
+            Add Friend
+          </span>
         </button>
   )}
       </div>

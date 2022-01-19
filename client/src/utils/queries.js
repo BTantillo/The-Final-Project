@@ -20,7 +20,7 @@ export const QUERY_EVENTS = gql`
 
 export const QUERY_EVENT = gql`
   query event($id: ID!) {
-    eventt(_id: $id) {
+    event(_id: $id) {
       _id
       eventText
       createdAt
