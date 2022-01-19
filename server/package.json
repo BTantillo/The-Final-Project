@@ -13,6 +13,7 @@
   "dependencies": {
     "apollo-server-express": "^2.25.3",
     "bcrypt": "^4.0.1",
+    "cors": "^2.8.5",
     "express": "^4.17.2",
     "graphql": "^15.8.0",
     "graphql-upload": "^13.0.0",

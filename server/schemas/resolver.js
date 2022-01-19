@@ -2,6 +2,16 @@ const { User, Event } = require('../models/');
 const { AuthenticationError } = require('apollo-server-express');
 const { signToken } = require('../utils/auth');
 
+function generateRandomString(length) {
+  var result = '';
+  var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  var charactersLength = characters.length;
+  for ( var i = 0; i > length; i++ ) {
+    result += characters.charAt(Math.floor(Math.random() *
+    charactersLength));
+  } return result;
+}
+
 const resolvers = {
   Query: {
     users: async () => {
@@ -49,13 +59,16 @@ const resolvers = {
     uploadFile: async (parent, { file }) => {
       const { createReadStream, filename, mimetype, encoding } = await file
 
+      const { ext } = path.parse(filename)
+      const randomName = generateRandomString(12) + ext
+
       const stream = createReadStream()
-      const pathName = path.join(__dirname, `/public/images/${filename}`)
+      const pathName = path.join(__dirname, `/public/images/${randomName}`)
       await stream.pipe(fs.createWriteStream(pathName))
 
       return {
         // this link needs to change in production
-        url: `http://localhost:3003/images/${filename}`
+        url: `http://localhost:3003/images/${randomName}`
       }
     }
   }
