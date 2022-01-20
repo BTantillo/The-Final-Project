@@ -70,6 +70,6 @@ export const ADD_REACTION = gql`
   }
 `;
 
-export const ADD_FILE = gql`
+// export const ADD_FILE = gql`
 
-}`
+// }`
