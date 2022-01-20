@@ -6,13 +6,13 @@ import { QUERY_EVENTS } from '../../utils/queries';
 import RenderDropzone from '../../utils/DropZone';
 
 const ThoughtForm = () => {
-  // const onDrop = useCallback((acceptedFiles) => {
-  //   console.log(acceptedFiles);
-  // }, []);
+  const onDrop = useCallback((acceptedFiles) => {
+    console.log(acceptedFiles);
+  }, []);
 
-  // const { getRootProps, getInputProps } = useDropzone({
-  //   onDrop,
-  // });
+  const { getRootProps, getInputProps } = useDropzone({
+    onDrop,
+  });
   const [eventText, setText] = useState('')
   const [characterCount, setCharacterCount] = useState(0);
   const [addEvent, { error }] = useMutation(ADD_EVENT, {
