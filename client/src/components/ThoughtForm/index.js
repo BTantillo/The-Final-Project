@@ -1,9 +1,42 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState, useCallback, useEffect, useMemo } from 'react';
 import Dropzone, { useDropzone } from 'react-dropzone';
 import { useMutation } from '@apollo/client';
 import { ADD_EVENT } from '../../utils/mutations';
 import { QUERY_ME } from '../../utils/queries';
 import { QUERY_EVENTS } from '../../utils/queries';
+
+uploadFiles = async (validity, file) => {
+  if (validity.valid) {
+    await this.props.addImageFileMutation({
+      variables: {file}
+    })
+  }
+}
+const baseStyle = {
+  display: 'flex',
+  flexDirection: 'column',
+  justifycontent:'center',
+  padding: '20px',
+  borderWidth: 1,
+  borderRadius: 1,
+  borderColor: '#eeeeee',
+  borderStyle: 'dashed',
+  backgroundColor: '#fafafa',
+  color: '#bdbdbd',
+  transition: 'border .3s ease-in-out'
+};
+
+const activeStyle = {
+  borderColor: '#2196f3'
+};
+
+const acceptStyle = {
+  borderColor: '#00e676'
+};
+
+const rejectStyle = {
+  borderColor: '#ff1744'
+};
 
 const ThoughtForm = () => {
   const [files, setFiles] = useState([]);
@@ -14,9 +47,27 @@ const ThoughtForm = () => {
     })));
   }, []);
 
-  const { getRootProps, getInputProps } = useDropzone({
+  const { 
+    getRootProps,
+    getInputProps,
+    isDragActive,
+    isDragAccept,
+    isDragReject } = useDropzone({
     onDrop,
+    accept: 'image/jpeg, image/png'
   });
+
+  const style = useMemo(() => ({
+    ...baseStyle,
+    ...(isDragActive ? activeStyle : {}),
+    ...(isDragAccept ? acceptStyle : {}),
+    ...(isDragReject ? rejectStyle : {})
+  }), [
+    isDragActive,
+    isDragReject,
+    isDragAccept
+  ]);
+
   const [eventText, setText] = useState('');
   const [characterCount, setCharacterCount] = useState(0);
   const [addEvent, { error }] = useMutation(ADD_EVENT, {
@@ -98,9 +149,10 @@ const ThoughtForm = () => {
           onChange={handleChange}
         ></textarea>
         <section>
-        <div {...getRootProps()}>
+        <div {...getRootProps({style})}>
           <input {...getInputProps()} />
           <div>Drag and drop your images here.</div>
+          <em>(Only *.jpeg and *.png images will be accepted)</em>
         </div>
         <aside>
           {thumbs}

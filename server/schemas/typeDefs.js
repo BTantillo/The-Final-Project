@@ -8,6 +8,10 @@ const typeDefs = gql`
     events: [Event]
   }
 
+  type File {
+    filename: String!
+  }
+
   type Query {
     me: User
     users: [User]
@@ -39,6 +43,7 @@ const typeDefs = gql`
     addUser(username: String!, email: String!, password: String!): Auth
     addEvent(eventText: String!): Event
     addReaction(eventId: ID!, reactionBody: String!): Event
+    addImage(eventId: ID!)
     addFriend(friendId: ID!): User
     addCrew(crewId: ID!): User
   }
