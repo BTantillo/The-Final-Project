@@ -97,10 +97,15 @@ const ThoughtForm = () => {
           className='form-input col-12 col-md-9'
           onChange={handleChange}
         ></textarea>
+        <section>
         <div {...getRootProps()}>
           <input {...getInputProps()} />
           <div>Drag and drop your images here.</div>
         </div>
+        <aside>
+          {thumbs}
+        </aside>
+        </section>
         <button className='btn col-12 col-md-3' type='submit'>
           Submit
           <span className='icon'>
