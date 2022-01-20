@@ -1,8 +1,10 @@
 import React, { useState, useCallback } from 'react';
+import Dropzone, { useDropzone } from 'react-dropzone';
 import { useMutation } from '@apollo/client';
 import { ADD_EVENT } from '../../utils/mutations';
 import { QUERY_ME } from '../../utils/queries';
 import { QUERY_EVENTS } from '../../utils/queries';
+
 import RenderDropzone from '../../utils/DropZone';
 
 const ThoughtForm = () => {
@@ -38,13 +40,14 @@ const ThoughtForm = () => {
   });
 
   const handleChange = event => {
+
     if (event.target.value.length <= 280) {
       setText(event.target.value);
       setCharacterCount(event.target.value.length);
     }
   };
 
-  const handleFormSubmit = async event => {
+const handleFormSubmit = async event => {
     event.preventDefault();
 
     try {
