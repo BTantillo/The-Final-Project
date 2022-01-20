@@ -7,6 +7,10 @@ export const QUERY_EVENTS = gql`
       eventText
       createdAt
       username
+      team {
+        _id
+        username
+      }
       reactionCount
       reactions {
         _id
@@ -25,6 +29,10 @@ export const QUERY_EVENT = gql`
       eventText
       createdAt
       username
+      team {
+        _id
+        username
+      }
       reactionCount
       reactions {
         _id

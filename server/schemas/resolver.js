@@ -93,10 +93,14 @@ const resolvers = {
       throw new AuthenticationError('You need to be logged in!');
     },
 
-    addCrew: async (parent, { crewId }, context) => {
+    addCrew: async (parent, { crewId }, params) => {
+      console.log(crewId);
+      console.log(params);
+      console.log(params._id);
+
       if (context.user) {
         const updatedEvent = await Event.findOneAndUpdate(
-          { _id: context.user._id },
+          { _id: params._id },
           { $addToSet: { team: crewId } },
           { new: true }
         ).populate('crew');

@@ -38,6 +38,15 @@ export const ADD_FRIEND = gql`
   }
 `;
 
+export const ADD_CREW = gql`
+  mutation addCrew($id: ID!) {
+    addCrew(crewId: $id) {
+      _id
+      username
+    }
+  }
+`;
+
 // ! Convert to event
 
 export const ADD_EVENT = gql`
