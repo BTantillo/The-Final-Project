@@ -219,6 +219,8 @@ color: var(--quatrinary);
 }
 
 .form-textarea {
+  padding: 0.75rem;
+  margin: 0.2rem 0;
   background-color: var(--primary);
 }
 
