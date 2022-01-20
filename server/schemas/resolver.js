@@ -109,6 +109,16 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
+
+    singleUpload: async (parent, args) =>  {
+      return args.file.then(file => {
+        const {filename} = file
+
+        file.pipe(fs.createWriteStream(`../public/images/${filename}`))
+
+        return file
+      });
+    }
   },
 };
 

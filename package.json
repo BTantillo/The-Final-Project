@@ -22,5 +22,8 @@
   "homepage": "https://github.com/DuckArroyo/deep-thoughts#readme",
   "devDependencies": {
     "concurrently": "^6.5.1"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.1061.0"
   }
 }
