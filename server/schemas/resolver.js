@@ -1,6 +1,7 @@
 const { User, Event } = require('../models/');
 const { AuthenticationError } = require('apollo-server-express');
 const { signToken } = require('../utils/auth');
+const { ConnectionStates } = require('mongoose');
 
 const resolvers = {
   Query: {
@@ -93,20 +94,20 @@ const resolvers = {
       throw new AuthenticationError('You need to be logged in!');
     },
 
-    addCrew: async (parent, { crewId }, params) => {
-      console.log(crewId);
-      console.log(params);
-      console.log(params._id);
+    addCrew: async (parent, { crewId }, context) => {
+      console.log('crewId', crewId);
+      console.log('context.username._id: ', context.user._id);
 
-      if (context.user) {
-        const updatedEvent = await Event.findOneAndUpdate(
-          { _id: params._id },
-          { $addToSet: { team: crewId } },
-          { new: true }
-        ).populate('crew');
+      // if (context.user) {
+      console.log('Test');
+      const updatedEvent = await Event.findOneAndUpdate(
+        { _id: crewId },
+        { $addToSet: { team: context.user._id } },
+        { new: true }
+      ).populate('crew');
 
-        return updatedEvent;
-      }
+      return updatedEvent;
+      // }
     },
 
     login: async (parent, { email, password }) => {
