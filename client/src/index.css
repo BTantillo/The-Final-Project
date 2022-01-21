@@ -5,6 +5,7 @@
   --quatrinary: #293D38;
   --quinary: #d2dee4;
   --dark: #6c7575;
+  --light: #a8e0e0;
   --error: rgb(228, 46, 1);
   --border-radius: 0.3rem;
   --spacing-one: calc(1rem * 0.25);
@@ -200,6 +201,10 @@ color: var(--quatrinary);
   color: var(--primary);
 }
 
+#eventCardBody p {
+  color: var(--light);
+}
+
 /* FORM */
 .form-label,
 .form-input,
@@ -213,6 +218,8 @@ color: var(--quatrinary);
 }
 
 .form-textarea {
+  padding: 0.75rem;
+  margin: 0.2rem 0;
   background-color: var(--primary);
 }
 
@@ -223,6 +230,10 @@ color: var(--quatrinary);
   font-size: 1.2rem;
   border: 2px solid var(--dark);
   border-radius: var(--border-radius);
+}
+
+#formP {
+  color: var(--light);
 }
 
 [type='radio']:checked,

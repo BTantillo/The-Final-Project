@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import { useParams } from 'react-router-dom'
 import { useQuery } from '@apollo/client'
 import { QUERY_EVENT } from '../utils/queries'
@@ -29,7 +29,7 @@ const SingleEvent = props => {
           </span>{' '}
           event on {event.createdAt}
         </p>
-        <div className="card-body">
+        <div className="card-body"  id="eventCardBody">
           <p>{event.eventText}</p>
         </div>
       </div>

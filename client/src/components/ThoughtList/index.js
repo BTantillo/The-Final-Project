@@ -21,7 +21,7 @@ const ThoughtList = ({ events, title }) => {
               </Link>{' '}
               created an event on {event.createdAt}
             </p>
-            <div className="card-body">
+            <div className="card-body" id="eventCardBody">
               <Link to={`/event/${event._id}`}>
               <p>{event.eventText}</p>
               <p className="mb-0">
