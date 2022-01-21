@@ -53,6 +53,10 @@ sequelize - npm install sequelize
 [Portfolio](https://duckarroyo.github.io/portfolio/) |
 [GitHub](https://github.com/DuckArroyo)
 
-# Screenshots
+`Shayne Lemons` |
+[Email](mailto:lemonsshayne6@gmail.com) |
+[GitHub](https://github.com/SLemons6) 
+
+Screenshots
 
 <img src="./.png" style="width: 400px">
