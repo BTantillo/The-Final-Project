@@ -1,0 +1,26 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "project 3, final bootcamp project",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "watch": "nodemon"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "apollo": "^2.33.9",
+    "apollo-server-express": "^2.25.3",
+    "bcrypt": "^4.0.1",
+    "express": "^4.17.2",
+    "graphql": "^15.8.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.13.14",
+    "stripe": "^8.195.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  }
+}
