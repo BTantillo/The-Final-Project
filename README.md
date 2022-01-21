@@ -57,6 +57,10 @@ sequelize - npm install sequelize
 [Email](mailto:lemonsshayne6@gmail.com) |
 [GitHub](https://github.com/SLemons6) 
 
+`Ben Tantillo` |
+[Email](mailto:bentantillo@gmail.com) |
+[GitHub](https://github.com/BTantillo) 
+
 Screenshots
 
 <img src="./.png" style="width: 400px">
