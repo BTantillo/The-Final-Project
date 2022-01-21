@@ -1,9 +1,10 @@
 const { User, Event, File } = require('../models');
 const { AuthenticationError } = require('apollo-server-express');
 const { signToken } = require('../utils/auth');
+const { createWriteStream, mkdir } = require('fs');
 
 const storeUpload = async ({ stream, filename, mimetype }) => {
-  const id = shortid.generate();
+  var id = "id" + Math.random().toString(16).slice(2)
   const path = `images/${id}-${filename}`;
 
   return new Promise((resolve, reject) =>
