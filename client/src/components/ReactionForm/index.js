@@ -35,7 +35,7 @@ const ReactionForm = ({ eventId }) => {
 
   return (
     <div>
-      <p
+      <p id="formP"
         className={`m-0 ${characterCount === 280 || error ? 'text-error' : ''}`}
       >
         Character Count: {characterCount}/280
@@ -52,8 +52,11 @@ const ReactionForm = ({ eventId }) => {
           onChange={handleChange}
         ></textarea>
 
-        <button className="btn col-12 col-md-3" type="submit">
+        <button className="btn has-icons-right col-12 col-md-3" type="submit">
           Submit
+          <span className="icon">
+            <i className="fas fa-check"></i>
+          </span>
         </button>
       </form>
 
