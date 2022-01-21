@@ -9,9 +9,10 @@ const typeDefs = gql`
   }
 
   type File {
+    path: String!
+    id: ID!
     filename: String!
     mimetype: String!
-    encoding: String!
   }
 
   type Query {
@@ -21,6 +22,7 @@ const typeDefs = gql`
     events(username: String): [Event]
     event(_id: ID!): Event
     team(_id: ID!): User
+    files: [File!]
   }
 
   type Reaction {
@@ -45,8 +47,7 @@ const typeDefs = gql`
     addUser(username: String!, email: String!, password: String!): Auth
     addEvent(eventText: String!): Event
     addReaction(eventId: ID!, reactionBody: String!): Event
-    singleUpload(file: Upload!, eventId: ID!): File!
-    singleUploadStream(file: Upload!): File!
+    uploadFile(file: Upload!): File!
     addFriend(friendId: ID!): User
     addCrew(crewId: ID!): User
   }

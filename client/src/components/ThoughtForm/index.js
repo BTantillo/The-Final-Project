@@ -4,44 +4,44 @@ import { useMutation } from '@apollo/client';
 import { ADD_EVENT } from '../../utils/mutations';
 import { QUERY_ME } from '../../utils/queries';
 import { QUERY_EVENTS } from '../../utils/queries';
+import { UPLOAD_FILE } from '../../utils/mutations';
 
-uploadFiles = async (validity, file) => {
-  if (validity.valid) {
-    await this.props.addImageFileMutation({
-      variables: {file}
-    })
-  }
-}
 const baseStyle = {
   display: 'flex',
-  flexDirection: 'column',
+  flexdirection: 'column',
   justifycontent:'center',
   padding: '20px',
-  borderWidth: 1,
-  borderRadius: 1,
-  borderColor: '#eeeeee',
-  borderStyle: 'dashed',
-  backgroundColor: '#fafafa',
+  borderwidth: 1,
+  borderradius: 1,
+  bordercolor: '#eeeeee',
+  borderstyle: 'dashed',
+  backgroundcolor: '#fafafa',
   color: '#bdbdbd',
   transition: 'border .3s ease-in-out'
 };
 
 const activeStyle = {
-  borderColor: '#2196f3'
+  bordercolor: '#2196f3'
 };
 
 const acceptStyle = {
-  borderColor: '#00e676'
+  bordercolor: '#00e676'
 };
 
 const rejectStyle = {
-  borderColor: '#ff1744'
+  bordercolor: '#ff1744'
 };
 
 const ThoughtForm = () => {
   const [files, setFiles] = useState([]);
   const onDrop = useCallback((acceptedFiles) => {
     console.log(acceptedFiles);
+    const file = acceptedFiles[0];
+
+    uploadFile({
+      variables: { file },
+      onCompleted: () => {},
+    })
     setFiles(acceptedFiles.map(file => Object.assign(file, {
       preview: URL.createObjectURL(file)
     })));
@@ -67,7 +67,7 @@ const ThoughtForm = () => {
     isDragReject,
     isDragAccept
   ]);
-
+  const [uploadFile] = useMutation(UPLOAD_FILE)
   const [eventText, setText] = useState('');
   const [characterCount, setCharacterCount] = useState(0);
   const [addEvent, { error }] = useMutation(ADD_EVENT, {
@@ -149,11 +149,17 @@ const ThoughtForm = () => {
           onChange={handleChange}
         ></textarea>
         <section>
-        <div {...getRootProps({style})}>
+        <div
+        {...getRootProps(style)}
+        className={`dropzone ${isDragActive && 'isActive'}`}
+      >
           <input {...getInputProps()} />
-          <div>Drag and drop your images here.</div>
-          <em>(Only *.jpeg and *.png images will be accepted)</em>
-        </div>
+        {isDragActive ? (
+          <p>Drop the files here ...</p>
+        ) : (
+          <p>Drag 'n' drop some files here, or click to select files</p>
+        )}
+      </div>
         <aside>
           {thumbs}
         </aside>

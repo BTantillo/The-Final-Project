@@ -1,5 +1,6 @@
 const express = require('express');
 const { ApolloServer } = require('apollo-server-express');
+const cors = require('cors');
 const path = require('path');
 
 const { typeDefs, resolvers } = require('./schemas');
@@ -20,10 +21,14 @@ const startServer = async () => {
   console.log(`Use GraphQL at http://localhost:${PORT}${server.graphqlPath}`);
 };
 
+const dir = path.join(process.cwd(), 'images')
+
+app.use ('./public/images', express.static(dir))
 startServer();
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+app.use(cors('*'))
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, '../client/build')));

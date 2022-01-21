@@ -70,6 +70,12 @@ export const ADD_REACTION = gql`
   }
 `;
 
-// export const ADD_FILE = gql`
-
-// }`
+export const UPLOAD_FILE = gql `
+mutation uploadFIle($file: Upload!) {
+  uploadFile(file: $file) {
+    path
+    id
+    filename
+    mimetype
+  }
+}`

@@ -11,12 +11,12 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 
 import Home from './pages/Home';
-import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
-
+import { ApolloProvider, ApolloClient, InMemoryCache } from '@apollo/client';
+import { createUploadLink } from 'apollo-upload-client';
 import { setContext } from '@apollo/client/link/context'
 
-const httplink = createHttpLink({
-  uri: '/graphql'
+const httplink = createUploadLink({
+  uri: 'http://localhost:3003/graphql'
 })
 
 const authLink = setContext((_, { headers }) => {
